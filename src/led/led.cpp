@@ -23,9 +23,9 @@ static const unsigned long BLINK_INTERVAL = 500; // 500毫秒闪烁间隔
 // 初始化灯光系统
 void initLights() {
     // 创建LEDStripController实例
-    static LEDStripController strip0(8, 39);   // 前后LED灯带
-    static LEDStripController strip1(6, 38);   // 左右LED灯带
-    
+    static LEDStripController strip0(NUM_FB_LEDS, LED_FB_PIN);   // 前后LED灯带
+    static LEDStripController strip1(NUM_LR_LEDS, LED_LR_PIN);   // 左右LED灯带
+
     ledStripFront = &strip0;
     ledStripSide = &strip1;
     

@@ -184,34 +184,34 @@ void onWsEvent(AsyncWebSocket *server, AsyncWebSocketClient *client,
                         resDoc["type"] = "pid_data";
 
                         // 修改点：强制以小数格式输出数值
-                        JsonObject speed = resDoc.createNestedObject("speed");
+                        JsonObject speed = resDoc["speed"].to<JsonObject>();
                         speed["Kp"] = String(SpeedPID.Kp, 6).toFloat(); // 保留5位小数
                         speed["Ki"] = String(SpeedPID.Ki, 6).toFloat(); // 保留7位小数
                         speed["Kd"] = String(SpeedPID.Kd, 6).toFloat();
 
-                        JsonObject upright = resDoc.createNestedObject("upright");
+                        JsonObject upright = resDoc["upright"].to<JsonObject>();
                         upright["Kp"] = String(UprightPID.Kp, 6).toFloat();
                         upright["Ki"] = String(UprightPID.Ki, 6).toFloat();
                         upright["Kd"] = String(UprightPID.Kd, 6).toFloat();
 
-                        JsonObject turn = resDoc.createNestedObject("turn");
+                        JsonObject turn = resDoc["turn"].to<JsonObject>();
                         turn["Kp"] = String(TurnPID.Kp, 6).toFloat();
                         turn["Ki"] = String(TurnPID.Ki, 6).toFloat();
                         turn["Kd"] = String(TurnPID.Kd, 6).toFloat();
 
-                        JsonObject motor_pid = resDoc.createNestedObject("motor_pid");
+                        JsonObject motor_pid = resDoc["motor_pid"].to<JsonObject>();
                         motor_pid["CS_P"] = String(motor_A.PID_current_d.P, 6).toFloat();
                         motor_pid["CS_I"] = String(motor_A.PID_current_d.I, 6).toFloat();
 
 // 滤波器参数
-                        JsonObject lpf = resDoc.createNestedObject("lpf");
+                        JsonObject lpf = resDoc["lpf"].to<JsonObject>();
                         lpf["velocity_Tf"] = String(motor_A.LPF_velocity.Tf, 6).toFloat();
                         lpf["current_d_Tf"] = String(motor_A.LPF_current_d.Tf, 6).toFloat();
                         lpf["current_q_Tf"] = String(motor_A.LPF_current_q.Tf, 6).toFloat();
                         lpf["angle_Tf"] = String(motor_A.LPF_angle.Tf, 6).toFloat();
 
 // 卡尔曼滤波器
-                        JsonObject kalman_filter = resDoc.createNestedObject("kalman_filter");
+                        JsonObject kalman_filter = resDoc["kalman_filter"].to<JsonObject>();
                         kalman_filter["mea_e"] = String(KalmanFilter_mpu._err_measure, 6).toFloat();
                         kalman_filter["est_e"] = String(KalmanFilter_mpu._err_estimate, 6).toFloat();
                         kalman_filter["q"] = String(KalmanFilter_mpu._q, 6).toFloat();
@@ -224,10 +224,10 @@ void onWsEvent(AsyncWebSocket *server, AsyncWebSocketClient *client,
                         lpf["control_speed"] = String(lpf_control_speed.Tf, 6).toFloat();
 
 
-                        JsonObject mpu = resDoc.createNestedObject("mpu");
+                        JsonObject mpu = resDoc["mpu"].to<JsonObject>();
                         mpu["offset"] = String(Car_Info.Angle_Deviation, 6).toFloat();
 
-                        JsonObject K_data = resDoc.createNestedObject("K");
+                        JsonObject K_data = resDoc["K"].to<JsonObject>();
                         K_data["K1"] = String(K[0], 6).toFloat();
                         K_data["K2"] = String(K[1], 6).toFloat();
                         K_data["K3"] = String(K[2], 6).toFloat();
