@@ -1,0 +1,54 @@
+#ifndef BatteryAndButton_h
+#define BatteryAndButton_h
+
+#include "include/precompiled.h"
+
+
+// ----------------------
+#define BUTTON_PIN     BUTTON_DIS_GPIO        // 按键引脚
+#define BUZZER_PIN     BEEP_GPIO              // 蜂鸣器引脚
+#define POWEREN_PIN    PWR_EN_GPIO            // 电源引脚
+#define BAT_ADC_PIN    BAT_ADC_GPIO           // 电源电压引脚
+
+//#define voltage_3v3    3.28   // 3.3V供电校准
+//#define resistance_fix (0.51)  //电阻值修正
+
+
+#define voltage_3v3    3.245   // 3.3V供电校准
+#define resistance_fix (+805)  // 采样修正
+
+
+#define resistance_vcc 20     // 电阻值K（VCC端）
+#define resistance_gnd 10     // 电阻值K（GND端）
+
+//--------------------- SOUND ID ---------------------
+#define changeColorID  11
+#define powerOnID      4
+#define powerOffID     5
+#define powerOffledID  1
+
+// ---------------------- button class -------------------------
+class PWR_AND_BNT
+{
+  public:
+    boolean init();
+};
+
+void balanceCarPowerOn();
+void balanceCarPowerOff();
+void ButtonEventTask(void *pvParameters);
+void BatteryVoltageCheckTask(void *pvParameters);
+void initpower();
+void eeprom_writer_task_run();
+
+[[noreturn]] void ButtonBatteryTask(void *pvParameters);
+
+void eeprom_writer_task_run();
+
+extern PWR_AND_BNT PowerAndButton;
+extern uint16_t batteryVoltage_raw;
+extern float vcc_voltage_out;
+extern uint16_t battery_percent;
+
+
+#endif
