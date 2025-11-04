@@ -147,7 +147,7 @@ public:
     };
 
     float getAngleX() {
-        return angleX-(0.0231f+temperature*0.0421f);
+        return angleX-(temperature*0.0421f);  //return angleX-(0.0231f+temperature*0.0421f);
     };
 
     float getAngleY() {

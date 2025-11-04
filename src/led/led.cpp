@@ -124,7 +124,8 @@ void turnOnLeftIndicator() {
     if (ledStripSide != nullptr) {
         // 清除左侧显示并仅点亮左侧LED(1-3号灯珠)
         for (int i = 0; i < 3 && i < ledStripSide->getNumLeds(); i++) {
-            ledStripSide->setPixelColor(i, CRGB::Orange);
+            // 使用更纯正的黄色
+            ledStripSide->setPixelColor(i, CRGB(255, 255, 0)); // 原来是 CRGB(255, 165, 0)
         }
         ledStripSide->show();
         leftIndicatorStatus = true;
@@ -153,7 +154,8 @@ void turnOnRightIndicator() {
     if (ledStripSide != nullptr) {
         // 清除右侧显示并仅点亮右侧LED(4-6号灯珠)
         for (int i = 3; i < 6 && i < ledStripSide->getNumLeds(); i++) {
-            ledStripSide->setPixelColor(i, CRGB::Orange);
+            // 使用更纯正的黄色
+            ledStripSide->setPixelColor(i, CRGB(255, 255, 0)); // 原来是 CRGB(255, 165, 0)
         }
         ledStripSide->show();
         rightIndicatorStatus = true;
@@ -180,14 +182,16 @@ void turnOffRightIndicator() {
 // 打开双闪灯（危险警示灯）
 void turnOnHazardLights() {
     if (ledStripFront != nullptr && ledStripSide != nullptr) {
-        // 设置所有LED为橙色闪烁
+        // 设置所有LED为黄色闪烁
         // 前后灯带(1-8号灯珠)
         for (int i = 0; i < ledStripFront->getNumLeds(); i++) {
-            ledStripFront->setPixelColor(i, CRGB::Orange);
+            // 使用更纯正的黄色
+            ledStripFront->setPixelColor(i, CRGB(255, 255, 0)); // 原来是 CRGB(255, 165, 0)
         }
         // 左右灯带(1-6号灯珠)
         for (int i = 0; i < ledStripSide->getNumLeds(); i++) {
-            ledStripSide->setPixelColor(i, CRGB::Orange);
+            // 使用更纯正的黄色
+            ledStripSide->setPixelColor(i, CRGB(255, 255, 0)); // 原来是 CRGB(255, 165, 0)
         }
         ledStripFront->show();
         ledStripSide->show();
@@ -326,7 +330,8 @@ void updateLights() {
                 // 左转灯亮
                 if (ledStripSide != nullptr) {
                     for (int i = 0; i < 3 && i < ledStripSide->getNumLeds(); i++) {
-                        ledStripSide->setPixelColor(i, CRGB::Orange);
+                        // 使用更纯正的黄色
+                        ledStripSide->setPixelColor(i, CRGB(255, 255, 0)); // 原来是 CRGB(255, 165, 0)
                     }
                     ledStripSide->show();
                 }
@@ -350,7 +355,8 @@ void updateLights() {
                 // 右转灯亮
                 if (ledStripSide != nullptr) {
                     for (int i = 3; i < 6 && i < ledStripSide->getNumLeds(); i++) {
-                        ledStripSide->setPixelColor(i, CRGB::Orange);
+                        // 使用更纯正的黄色
+                        ledStripSide->setPixelColor(i, CRGB(255, 255, 0)); // 原来是 CRGB(255, 165, 0)
                     }
                     ledStripSide->show();
                 }

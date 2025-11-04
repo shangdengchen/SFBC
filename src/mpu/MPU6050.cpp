@@ -143,7 +143,7 @@ void MPU6050::calcGyroOffsets(bool console, uint16_t delayBefore, uint16_t delay
         }
 
         // 计算平均偏移量（X轴特殊处理-5.0）
-        gyroXoffset = x / calc_time - 5.0f;
+        gyroXoffset = x / calc_time;
         gyroYoffset = y / calc_time;
         gyroZoffset = z / calc_time;
 

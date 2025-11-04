@@ -73,7 +73,7 @@ void Setup_System() {
     LogInitialization("电池模块", PowerAndButton.init());
 
     //nvs初始化
-    //Read_Data();
+    Read_Data();
 
     //I2C初始化
     LogInitialization("I2C模块", I2C_init());

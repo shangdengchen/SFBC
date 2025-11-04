@@ -113,7 +113,7 @@ void AbnormalSpinDetect() {
     }
 
     if (Car_Info.Acc_Protect) {
-        if (mpu6050.absAccZ > 1.35f && Car_Info.Status == Open_Output &&
+        if (mpu6050.absAccZ > 2.0f && Car_Info.Status == Open_Output &&
             abs(Car_Info.NowSpeed) < 8 && abs(Car_Info.NowPitch) < 5) {
             Serial.println("[系统-动作]:小车提起(加速度),关闭输出");
             MotorClose();

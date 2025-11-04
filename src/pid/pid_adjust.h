@@ -18,8 +18,8 @@ typedef struct PIDFloat_Obj
     volatile float Ki_Out;
     volatile float Kp_Min;
     volatile float Kp_Max;
-
     volatile float Ki_Min;
+    
     volatile float Ki_Max;
 
     volatile float Kd_Min;
