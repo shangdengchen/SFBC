@@ -11,11 +11,11 @@ float K[4] = {-12, 1.45, -0, 50.0};
 //卡尔曼滤波        e_mea: 测量不确定性   e_est: 估计不确定性 q: 过程噪声
 SimpleKalmanFilter KalmanFilter_mpu(1.0, 0.3, 1.0);
 //滤波
-LowPassFilter lpf_speed = LowPassFilter(0.0f);
+LowPassFilter lpf_speed = LowPassFilter(0.02f);
 LowPassFilter lpf_speed_error = LowPassFilter(0.02f);
-LowPassFilter lpf_gyro_x = LowPassFilter(0.0f);
-LowPassFilter lpf_control_steer = LowPassFilter(0.03f);
-LowPassFilter lpf_control_speed = LowPassFilter(0.05f);
+LowPassFilter lpf_gyro_x = LowPassFilter(0.020f);
+LowPassFilter lpf_control_steer = LowPassFilter(0.02f);
+LowPassFilter lpf_control_speed = LowPassFilter(0.03f);
 
 
 Car_t Car_Info;
@@ -220,22 +220,6 @@ void Control_Loop() {
     motor_A.loopFOC();
     motor_B.loopFOC();
 
-
-
-//    motor_A.move(0);
-//    motor_B.move(0);
-//
-//    Serial.print("d:");
-//    Serial.print(motor_A.current.q);
-//    Serial.print(",");
-//    Serial.print(motor_A.current.d);
-////    Serial.print(",");
-////    Serial.print(motor_A.shaft_velocity);
-////    Serial.print(",");
-////    Serial.println(motor_A.target);
-//    Serial.print("\n");
-//    return;
-
     motor_A.move(Car_Info.ControlOut_A);
     motor_B.move(Car_Info.ControlOut_B * (-1));
     //===============================传感器==============================
@@ -323,15 +307,14 @@ void Control_Loop() {
     );
 
 
-
     // 输出电机速度控制量
-    if (TurnPID.PID_Out > 0) {
+    // if (TurnPID.PID_Out > 0) {
         Car_Info.ControlOut_A = UprightPID.PID_Out + TurnPID.PID_Out;
-        Car_Info.ControlOut_B = UprightPID.PID_Out;
-    } else {
-        Car_Info.ControlOut_A = UprightPID.PID_Out;
         Car_Info.ControlOut_B = UprightPID.PID_Out - TurnPID.PID_Out;
-    }
+    // } else {
+    //     Car_Info.ControlOut_A = UprightPID.PID_Out + TurnPID.PID_Out;
+    //     Car_Info.ControlOut_B = UprightPID.PID_Out - TurnPID.PID_Out;
+    // }
 
 
     //============================保护=================================

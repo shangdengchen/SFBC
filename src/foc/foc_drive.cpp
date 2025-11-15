@@ -72,7 +72,7 @@ void Foc_Parameters_init() {
     //速度PID
     motor_A.PID_velocity.P = VEL_Kp_A;
     motor_A.PID_velocity.I = VEL_Ki_A;
-    motor_A.PID_velocity.I = VEL_Kd_A;
+    motor_A.PID_velocity.D = VEL_Kd_A;
     motor_A.PID_velocity.output_ramp = 1000.0f;
 
     //电流d PID
@@ -121,7 +121,7 @@ void Foc_Parameters_init() {
     //速度PID
     motor_B.PID_velocity.P = VEL_Kp_B;
     motor_B.PID_velocity.I = VEL_Ki_B;
-    motor_B.PID_velocity.I = VEL_Kd_B;
+    motor_B.PID_velocity.D = VEL_Kd_B;
     motor_B.PID_velocity.output_ramp = 1000.0f;
 
     //电流d PID

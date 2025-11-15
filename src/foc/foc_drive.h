@@ -11,12 +11,12 @@
 
 #define OPEN_MOTOR_FIRST    0
 
-#define PID_CS_P_A          0.4f
-#define PID_CS_I_A          0.2f
-#define PID_CS_D_A          0.0005f
-#define   VEL_Kp_A          0.1f
-#define   VEL_Ki_A          0.0001f
-#define   VEL_Kd_A          0.00f
+#define PID_CS_P_A          0.4f      //0.4f
+#define PID_CS_I_A          0.2f      //0.2f
+#define PID_CS_D_A          0.0005f   //0.0005f  
+#define   VEL_Kp_A          0.09f     //0.1f
+#define   VEL_Ki_A          0.0001f   //0.0001f
+#define   VEL_Kd_A          0.00f     //0.00f
 
 #define PID_CS_P_B          PID_CS_P_A
 #define PID_CS_I_B          PID_CS_I_A
@@ -31,7 +31,6 @@
 #define LPF_current_q_Tf    0.1f
 #define LPF_angle_Tf        0.05f
 #define MAX_SPEED           130.0f
-
 
 // MPU6050
 extern MPU6050 mpu6050;

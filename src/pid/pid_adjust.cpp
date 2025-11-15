@@ -18,9 +18,9 @@ void PID_parameters_Init() {
     SpeedPID.Kd = 0.0000f;
 
 
-    UprightPID.Kp = 1.5f;   // UprightPID.Kp = 2.0f;
+    UprightPID.Kp = 2.9f;   // UprightPID.Kp = 2.0f;
     UprightPID.Ki = 0.0f;
-    UprightPID.Kd = -0.06f;  //UprightPID.Kd = -0.055f;
+    UprightPID.Kd = -0.09f;  //UprightPID.Kd = -0.055f;
 
     TurnPID.Kp = 0.8f;
     TurnPID.Ki = 0.00f;
