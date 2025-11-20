@@ -19,6 +19,7 @@ extern TaskHandle_t Task5;
 
 void RTOS_Task();
 void Create_LED_tasks();
+void Led_Loop(void *pvParameters);
 extern void Create_ButtonBatteryTask();
 
 

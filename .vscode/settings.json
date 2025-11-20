@@ -24,5 +24,7 @@
     "cody.autocomplete.experimental.ollamaOptions": {
         "url": "http://127.0.0.1:11434",
         "model": "Malicus7862/deepseekcoder-6.7b-jarvis-gguf:latest"
-    }
+    },
+    "workbench.preferredLightColorTheme": "One Dark Modern Classic",
+    "workbench.colorTheme": "One Dark Modern Classic"
 }

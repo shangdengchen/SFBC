@@ -12,6 +12,7 @@
 #include "web/web.h"
 #include "task/freertos_task.h"
 #include "encoder/encoder.h"
+#include "led/led.h"
 
 
 // 定义一个字符串数组，存储多个硬件版本
@@ -78,6 +79,9 @@ void Setup_System() {
     //I2C初始化
     LogInitialization("I2C模块", I2C_init());
 
+    //LED初始化
+    initLights();
+
     //MPU初始化
     LogInitialization("MPU6050模块", mpu6050.begin());
 
@@ -105,6 +109,7 @@ void Setup_System() {
         // 打印最终的自检结果
         PrintTestResult();
     }
+
 
 }
 

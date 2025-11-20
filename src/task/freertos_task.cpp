@@ -5,6 +5,8 @@
 #include "handle/xbox_controls.h"
 #include "power/BatteryAndButton.h"
 #include "nvs/nvs.h"
+#include "led/led.h"
+
 
 #include "esp_task_wdt.h"
 #include "Init/init_System.h"
@@ -77,16 +79,17 @@ void Create_Web_tasks() {
                             1);
 }
 
-// void Create_LED_tasks() {
-//     //LED显示
-//     xTaskCreatePinnedToCore(Led_Loop,
-//                             "Led_Loop",
-//                             1024,
-//                             NULL,
-//                             1,
-//                             &Task4,
-//                             1);
-// }
+// 创建LED任务
+void Create_LED_tasks() {
+    //LED显示
+    xTaskCreatePinnedToCore(Led_Loop,
+                            "Led_Loop",
+                            2048,
+                            NULL,
+                            1,
+                            &Task5,
+                            1);
+}
 
 // 主任务创建函数
 void RTOS_Task() {
@@ -99,5 +102,6 @@ void RTOS_Task() {
     // 创建核心1的任务
     Create_Handle_control_tasks();
     Create_Web_tasks();
+    Create_LED_tasks();
 
 }
